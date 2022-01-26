@@ -1,12 +1,13 @@
 var http = require("http");
 var fs = require("fs");
 var mime = require("mime");
+var path = require("path");
 http
   .createServer(function (req, res) {
-    console.log(decodeURIComponent(req.url));
+    console.log(path.join(__dirname, "../", decodeURIComponent(req.url)));
     //     console.log(decodeURI(req.url));
     if (req.url != "/app.js") {
-      var url = __dirname + decodeURIComponent(req.url);
+      var url = path.join(__dirname, "../", decodeURIComponent(req.url));
       fs.stat(url, function (err, stat) {
         if (err) {
           res.writeHead(404, { "Content-Type": "text/html" });
@@ -44,4 +45,4 @@ http
       res.end("Sorry, access to that file is Forbidden");
     }
   })
-  .listen(6000);
+  .listen(8080);
