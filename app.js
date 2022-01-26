@@ -2,12 +2,13 @@ var http = require("http");
 var fs = require("fs");
 var mime = require("mime");
 var path = require("path");
+var decode = require('urldecode')
 http
   .createServer(function (req, res) {
-    console.log(path.join(__dirname, "../", decodeURIComponent(req.url)));
+    console.log(path.join(__dirname, "../", decode(req.url)));
     //     console.log(decodeURI(req.url));
     if (req.url != "/app.js") {
-      var url = path.join(__dirname, "../", decodeURIComponent(req.url));
+      var url = path.join(__dirname, "../", decode(req.url));
       fs.stat(url, function (err, stat) {
         if (err) {
           res.writeHead(404, { "Content-Type": "text/html" });

@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mime": "^3.0.0"
+    "mime": "^3.0.0",
+    "urldecode": "^1.0.1"
   }
 }
